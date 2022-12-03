@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+
+spec: 
+  # This defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services or may be external uses to connect to browser
+  selector:
+    app: webapp
+    # release: "0-5"
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080    # >30000
+
+  type: NodePort   #ClusterIP
+  # if we are making our service ClusterIP We are telling our k8 that this will be only
+  # accesible inside our cluster.Web browser will not be able to access it.
+  # NodePort: We are going to expose our pod using NodePort: We are allowed to choose NodePort parameter inside our yml
+   
