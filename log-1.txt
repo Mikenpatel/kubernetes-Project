@@ -1,0 +1,90 @@
+Name:             elasticsearch-logging-1
+Namespace:        kube-system
+Priority:         0
+Service Account:  elasticsearch-logging
+Node:             i-07d2ad3a69c6c6485/172.20.193.137
+Start Time:       Wed, 02 Nov 2022 22:03:37 +0000
+Labels:           controller-revision-hash=elasticsearch-logging-866576bc7
+                  k8s-app=elasticsearch-logging
+                  kubernetes.io/cluster-service=true
+                  statefulset.kubernetes.io/pod-name=elasticsearch-logging-1
+                  version=v6.2.5
+Annotations:      <none>
+Status:           Running
+IP:               100.96.3.8
+IPs:
+  IP:           100.96.3.8
+Controlled By:  StatefulSet/elasticsearch-logging
+Init Containers:
+  elasticsearch-logging-init:
+    Container ID:  containerd://076e404e77d94e0d8e384c1315fd95fe97d3d0ef3d6af55dd236c1d7982bcdc0
+    Image:         alpine:3.6
+    Image ID:      docker.io/library/alpine@sha256:66790a2b79e1ea3e1dabac43990c54aca5d1ddf268d9a5a0285e4167c8b24475
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /sbin/sysctl
+      -w
+      vm.max_map_count=262144
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Wed, 02 Nov 2022 22:03:44 +0000
+      Finished:     Wed, 02 Nov 2022 22:03:44 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rqtc5 (ro)
+Containers:
+  elasticsearch-logging:
+    Container ID:   containerd://12fbbd0280da2dd862e8fbfde34550a6f020275e1b231deedd2a6092301832da
+    Image:          k8s.gcr.io/elasticsearch:v6.2.5
+    Image ID:       k8s.gcr.io/elasticsearch@sha256:8986f364dee44c62a6b6f69986e593a5a9cf43a133758daed114ed3b157edbe4
+    Ports:          9200/TCP, 9300/TCP
+    Host Ports:     0/TCP, 0/TCP
+    State:          Running
+      Started:      Wed, 02 Nov 2022 22:03:45 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:  1
+    Requests:
+      cpu:  100m
+    Environment:
+      NAMESPACE:  kube-system (v1:metadata.namespace)
+    Mounts:
+      /data from elasticsearch-logging (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rqtc5 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  elasticsearch-logging:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  elasticsearch-logging-elasticsearch-logging-1
+    ReadOnly:   false
+  kube-api-access-rqtc5:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason                  Age   From                     Message
+  ----    ------                  ----  ----                     -------
+  Normal  Scheduled               23m   default-scheduler        Successfully assigned kube-system/elasticsearch-logging-1 to i-07d2ad3a69c6c6485
+  Normal  SuccessfulAttachVolume  23m   attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-a7ff3900-29ba-40fa-8663-344b21db1de0"
+  Normal  Pulled                  23m   kubelet                  Container image "alpine:3.6" already present on machine
+  Normal  Created                 23m   kubelet                  Created container elasticsearch-logging-init
+  Normal  Started                 23m   kubelet                  Started container elasticsearch-logging-init
+  Normal  Pulled                  23m   kubelet                  Container image "k8s.gcr.io/elasticsearch:v6.2.5" already present on machine
+  Normal  Created                 23m   kubelet                  Created container elasticsearch-logging
+  Normal  Started                 23m   kubelet                  Started container elasticsearch-logging
